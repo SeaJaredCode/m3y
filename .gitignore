@@ -1,0 +1,9 @@
+
+# Tex output/temporary files
+*.aux
+*.gz
+*.toc
+*.log
+*.out
+
+out/

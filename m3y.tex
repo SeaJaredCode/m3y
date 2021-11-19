@@ -1,0 +1,130 @@
+% !TEX TS-program = XeLaTeX
+% XeLaTeX can use any Mac OS X font. See the setromanfont command below.
+% Input to XeLaTeX is full Unicode, so Unicode characters can be typed directly into the source.
+
+% The next lines tell TeXShop to typeset with xelatex, and to open and save the source with Unicode encoding.
+
+%!TEX encoding = UTF-8 Unicode
+\documentclass[11pt,openany,showtrims,extrafontsizes]{memoir}
+\usepackage{graphicx}
+\usepackage{fontspec}
+
+\usepackage{xifthen} 	  % for variable arity newcommand
+\usepackage{xr}
+\usepackage{hyperref} 	  % for \url
+\usepackage{changepage}   % for the adjustwidth environment
+\usepackage[super]{nth}	  % for formatting ordinal numbers
+
+\usepackage{subfiles}
+
+% printing on Blurb (6" x 9", bleed)
+\setstocksize{234.95mm}{155.57mm}
+\settrimmedsize{228.61mm}{152.4mm}{*}
+\settrims{3.17mm}{3.17mm} % top and outside edges
+\setlrmarginsandblock{20mm}{15mm}{*} % "Steve Jobs" margins topxoutxbottomxinside 15 15 12 20
+\setulmarginsandblock{19.76mm}{14mm}{*} % upper margin was 20mm, minus 0.24mm because of higher footer
+\setheadfoot{14.3pt}{\footskip} % because of the À (original header was 13.6pt high; added 0.7pt = 0.24mm)
+
+\checkandfixthelayout
+\makeatletter
+
+\setlength{\cftbeforepartskip}{1em \@plus\p@} % default is ?, could add more as long as toc fits on 4 pages
+\setlength{\cftbeforechapterskip}{0.1em \@plus\p@} % default is 1.0em
+
+\makeatother
+
+\setmainfont{Hoefler Text}
+\setsansfont[Scale=MatchLowercase]{Gill Sans}
+\setmonofont[Scale=MatchLowercase]{Andale Mono}
+
+\addtopsmarks{headings}{}{
+  \createmark{chapter}{left}{nonumber}{}{}
+}
+\pagestyle{headings} % activate changes
+\makeevenhead{headings}{\thepage}{\small My Three Years in the Infantry, 1943 -- 1946}{}
+\makeoddhead{headings}{}{\small\leftmark}{\thepage}
+
+% remove page numbers from chapter and part pages
+\copypagestyle{chapter}{plain}
+\makeoddfoot{chapter}{}{}{}
+\makeevenfoot{chapter}{}{}{}
+\copypagestyle{part}{plain}
+\makeoddfoot{part}{}{}{}
+\makeevenfoot{part}{}{}{}
+
+% Headings ---
+
+\chapterstyle{dash}
+% section heading style
+\setsecheadstyle{\normalfont\itshape}
+% don't number sections
+\setsecnumdepth{chapter}
+
+
+% Custom commands ---
+
+\newcommand\PostDate[1]{
+  {\large \emph{#1}}}
+
+\newcommand\Chapter[2]{
+  \chapter[#1]{#1 (\emph{#2})}} % the first arg is used for heading
+  
+\newcommand\q[2]{
+  \ifthenelse{\equal{#2}{}}{\blockquote{#1}}{\blockquote[#2]{#1}}}
+
+\newcommand\itw[2]{ % interview question and response
+	\noindent\textbf{#1}\par
+	\smallskip
+	\noindent{#2}\par
+	\bigskip
+}
+
+\newcommand\p[2]{ % poem
+  \begin{verse}
+    {\itshape #1}
+
+    \ifthenelse{\equal{#2}{}}{}{(#2)}
+  \end{verse}}
+
+\def\el{\textelp{}\ } % ellipsis
+\def\els{\textelp{}} % ellipsis without space (when before.)
+
+\newcommand\pic[3]{
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=#2cm]{images/#1}\\
+    \emph{#3}
+  \end{figure}}
+
+\title{My Three Years in the Infantry\\ \Large 1943 -- 1946}
+\author{Bernard Huntley}
+\date{}
+
+\begin{document}
+\subfile{front-matter.tex}
+
+\mainmatter
+\part*{Introduction}\label{introduction}
+\addcontentsline{toc}{part}{Introduction}
+
+\chapter{Stateside Infantry Training}\label{stateside-infantry-training}
+\subfile{content/01-stateside-infantry-training}
+
+\section{Infantry Basic in South Carolina}\label{infantry-basic}
+\subfile{content/01.1-infantry-basic}
+
+\section{Communications School in Georgia}\label{communications-school}
+\subfile{content/01.2-communications-school}
+
+\section{More Basic Training}\label{more-basic-training}
+\subfile{content/01.3-more-basic-training}
+
+\part*{War in Europe}\label{war-in-europe}
+\addcontentsline{toc}{part}{War in Europe}
+\subfile{content/01.3-more-basic-training}
+
+\part*{The Battle of the Bulge}\label{battle-of-the-bulge}
+\addcontentsline{toc}{part}{The Battle of the Bulge}
+\subfile{content/01.3-more-basic-training}
+
+\end{document}
