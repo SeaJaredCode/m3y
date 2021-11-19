@@ -1,0 +1,39 @@
+% !TEX TS-program = xelatex
+% !TEX root = m3y-print.tex
+
+\def\OPTmodes{11pt,openany,showtrims,extrafontsizes}
+
+% From CTFP example:
+% After struggling a while to get it right, here's how to calculate:
+% 1. Use the calculator to get your specifications
+%    https://www.blurb.com/make/pdf_to_book/booksize_calculator
+% 2. Get the specifications. For a 6x9 hardcover (ImageWrap) book, I got:
+%
+%    Page Specifications	                    Inches
+%    Final, exported PDF should measure (w x h)	6.125 x 9.25
+%    Page size / trim line (w x h)	            6.0 x 9.0
+%    Bleed (top, bottom, and outside edges)	    0.125
+%    Safe boundary (Top, Bottom, Outside Edge)	0.25
+%    Safe boundary (Binding Edge)	            0.5
+%
+% 3. Trim line is at 0.625in, so to get safe text boundary (magenta line):
+%    Top margin:      0.625in (start at trim line, header space fills to safe line)
+%    Bottom margin:   0.625in + 0.25in = 0.875in
+%    Inner margin:    0.625in (start on the trim line)
+%    Binding offset:  0.5in
+%    Outer margin:    0.625in + 0.25in = 0.875in
+
+\def\OPTstockwidth{6.125in}      % Final, exported PDF size
+\def\OPTstockheight{9.25in}
+
+\def\OPTpaperwidth{6in}
+\def\OPTpaperheight{9in}
+
+\def\OPTtrimtop{.125in}
+\def\OPTtrimedge{.125in}
+
+\def\OPTmarginspine{.875in}		% safe + inner margin
+\def\OPTmarginedge{.625in}		% margin + safe space
+
+\def\OPTmargintop{.625in}		% header + header sep + safe space
+\def\OPTmarginbottom{.875in}	% footer + footer skip + safe space

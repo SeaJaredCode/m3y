@@ -1,107 +1,28 @@
-% !TEX TS-program = XeLaTeX
-% XeLaTeX can use any Mac OS X font. See the setromanfont command below.
-% Input to XeLaTeX is full Unicode, so Unicode characters can be typed directly into the source.
+% !TEX root = m3y-print.tex
 
-% The next lines tell TeXShop to typeset with xelatex, and to open and save the source with Unicode encoding.
+% -- Front matter order, etc. from (memoir user guide)
+% Half-title page recto no 1
+% Frontispiece, etc., or blank verso no 1
+% Title page recto no 2
+% Copyright page verso no 2
+% Dedication recto no 3
+% Blank verso no 3
+% Table of Contents recto yes 3 or 4
+% List of Figures recto or verso yes 3 or 4
+% List of Tables recto or verso yes etc.
+% Foreword recto or verso yes etc.
+% Preface recto or verso yes etc.
+% Acknowledgements recto or verso yes etc.
+% Introduction recto or verso yes etc.
+% Abbreviations, etc recto or verso yes etc.
 
-%!TEX encoding = UTF-8 Unicode
-\documentclass[11pt,openany,showtrims,extrafontsizes]{memoir}
-\usepackage{graphicx}
-\usepackage{fontspec}
+\input{title}
 
-\usepackage{xifthen} 	  % for variable arity newcommand
-\usepackage{xr}
-\usepackage{hyperref} 	  % for \url
-\usepackage{changepage}   % for the adjustwidth environment
-\usepackage[super]{nth}	  % for formatting ordinal numbers
+\frontmatter
+% \input{content/editor-note}
+\input{content/00-preface}
 
-\usepackage{subfiles}
-
-% printing on Blurb (6" x 9", bleed)
-\setstocksize{234.95mm}{155.57mm}
-\settrimmedsize{228.61mm}{152.4mm}{*}
-\settrims{3.17mm}{3.17mm} % top and outside edges
-\setlrmarginsandblock{20mm}{15mm}{*} % "Steve Jobs" margins topxoutxbottomxinside 15 15 12 20
-\setulmarginsandblock{19.76mm}{14mm}{*} % upper margin was 20mm, minus 0.24mm because of higher footer
-\setheadfoot{14.3pt}{\footskip} % because of the À (original header was 13.6pt high; added 0.7pt = 0.24mm)
-
-\checkandfixthelayout
-\makeatletter
-
-\setlength{\cftbeforepartskip}{1em \@plus\p@} % default is ?, could add more as long as toc fits on 4 pages
-\setlength{\cftbeforechapterskip}{0.1em \@plus\p@} % default is 1.0em
-
-\makeatother
-
-\setmainfont{Hoefler Text}
-\setsansfont[Scale=MatchLowercase]{Gill Sans}
-\setmonofont[Scale=MatchLowercase]{Andale Mono}
-
-\addtopsmarks{headings}{}{
-  \createmark{chapter}{left}{nonumber}{}{}
-}
-\pagestyle{headings} % activate changes
-\makeevenhead{headings}{\thepage}{\small My Three Years in the Infantry, 1943 -- 1946}{}
-\makeoddhead{headings}{}{\small\leftmark}{\thepage}
-
-% remove page numbers from chapter and part pages
-\copypagestyle{chapter}{plain}
-\makeoddfoot{chapter}{}{}{}
-\makeevenfoot{chapter}{}{}{}
-\copypagestyle{part}{plain}
-\makeoddfoot{part}{}{}{}
-\makeevenfoot{part}{}{}{}
-
-% Headings ---
-
-\chapterstyle{dash}
-% section heading style
-\setsecheadstyle{\normalfont\itshape}
-% don't number sections
-\setsecnumdepth{chapter}
-
-
-% Custom commands ---
-
-\newcommand\PostDate[1]{
-  {\large \emph{#1}}}
-
-\newcommand\Chapter[2]{
-  \chapter[#1]{#1 (\emph{#2})}} % the first arg is used for heading
-  
-\newcommand\q[2]{
-  \ifthenelse{\equal{#2}{}}{\blockquote{#1}}{\blockquote[#2]{#1}}}
-
-\newcommand\itw[2]{ % interview question and response
-	\noindent\textbf{#1}\par
-	\smallskip
-	\noindent{#2}\par
-	\bigskip
-}
-
-\newcommand\p[2]{ % poem
-  \begin{verse}
-    {\itshape #1}
-
-    \ifthenelse{\equal{#2}{}}{}{(#2)}
-  \end{verse}}
-
-\def\el{\textelp{}\ } % ellipsis
-\def\els{\textelp{}} % ellipsis without space (when before.)
-
-\newcommand\pic[3]{
-  \begin{figure}[htbp]
-    \centering
-    \includegraphics[width=#2cm]{images/#1}\\
-    \emph{#3}
-  \end{figure}}
-
-\title{My Three Years in the Infantry\\ \Large 1943 -- 1946}
-\author{Bernard Huntley}
-\date{}
-
-\begin{document}
-\subfile{front-matter.tex}
+\tableofcontents
 
 \mainmatter
 \part*{Introduction}\label{introduction}
@@ -126,5 +47,3 @@
 \part*{The Battle of the Bulge}\label{battle-of-the-bulge}
 \addcontentsline{toc}{part}{The Battle of the Bulge}
 \subfile{content/01.3-more-basic-training}
-
-\end{document}

@@ -2,12 +2,14 @@
 
 DIR := $(shell pwd)
 GIT_VER := $(shell git describe --tags --always --long | tr -d '\n')
-OUTPUT_DIR := ../out/$(GIT_VER)
+OUTPUT_DIR := ./out/$(GIT_VER)
 
 OUTPUT = m3y
 
 # Default top-level LaTeX to generate
-DEFAULTTOPTEX = m3y.tex
+DEFAULTTOPTEX = m3y-print.tex
+
+TOPTEXFILES = $(DEFAULTTOPTEX) #version.tex
 
 # Default PDF file to make
 DEFAULTPDF:=$(DEFAULTTOPTEX:.tex=.pdf)
@@ -16,9 +18,9 @@ DEFAULTPDF:=$(DEFAULTTOPTEX:.tex=.pdf)
 TOPPDFFILES:=$(TOPTEXFILES:.tex=.pdf)
 
 # Configuration files
-OPTFILES = opt-print-ustrade.tex \
-			opt-reader-10in.tex \
-			opt-scala.tex
+OPTFILES = opt-print-blurb.tex
+
+TEXFILES = $(TOPTEXFILES) $(OPTFILES)
 
 default: suffix=''
 default: out-dir $(DEFAULTPDF) # todo cover
@@ -37,7 +39,7 @@ $(TOPPDFFILES) : %.pdf : %.tex $(TEXFILES)
 			-jobname=m3y \
 			-outdir=$(OUTPUT_DIR) \
 			-pdflatex="xelatex %O %S" \
-			-pdf $<
+			-pdf $<; \
 	else @printf "Error: unable to find latexmk. Is it installed?\n" ;\
 	fi
 
@@ -53,7 +55,7 @@ out-dir:
 clean:
 	rm -f *.aux *.{out,log,pdf,dvi,fls,fdb_latexmk,aux,brf,bbl,idx,ilg,ind,toc,sed}
 	if which latexmk > /dev/null 2>&1 ; then latexmk -CA; fi
-	rm -r out/
+	rm -r out/ >> /dev/null 2>&1 || true
 
 clean-minted: 
 	rm -rf _minted-*
