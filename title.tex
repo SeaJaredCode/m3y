@@ -1,18 +1,20 @@
 % !TEX root = front-matter.tex
 
 % half-title page (recto)
-\pagestyle{empty}
+\makeatletter
+\thispagestyle{empty}
 \vspace*{\fill}
 \begin{center}
-\HUGE My Three Years in the Infantry\\ \Large 1943 -- 1946
+\HUGE \@title
 \end{center}
 \vspace*{\fill}
+\clearpage
+\makeatother
 
 % Blank verso page
-\clearpage
-\pagestyle{empty}
-\mbox{}
 \thispagestyle{empty}
+\mbox{}
+\clearpage
 
 % Title page (recto)
 \maketitle

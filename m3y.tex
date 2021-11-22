@@ -22,28 +22,76 @@
 % \input{content/editor-note}
 \input{content/00-preface}
 
+\renewcommand{\cftpartaftersnumb}{\hspace{.5em}}
+\renewcommand{\cftchaptername}{\hspace{1em}}
+\renewcommand\cftchapteraftersnumb{\normalfont}
+\renewcommand\cftbeforechapterskip{5pt plus 1pt}
 \tableofcontents
 
 \mainmatter
-\part*{Introduction}\label{introduction}
-\addcontentsline{toc}{part}{Introduction}
 
-\chapter{Stateside Infantry Training}\label{stateside-infantry-training}
+\part{Stateside Infantry Training}\label{stateside-infantry-training}
 \subfile{content/01-stateside-infantry-training}
 
-\section{Infantry Basic in South Carolina}\label{infantry-basic}
+\chapter{Infantry Basic in South Carolina}\label{infantry-basic}
 \subfile{content/01.1-infantry-basic}
 
-\section{Communications School in Georgia}\label{communications-school}
+\chapter{Communications School in Georgia}\label{communications-school}
 \subfile{content/01.2-communications-school}
 
-\section{More Basic Training}\label{more-basic-training}
+\chapter{More Basic Training}\label{more-basic-training}
 \subfile{content/01.3-more-basic-training}
 
-\part*{War in Europe}\label{war-in-europe}
-\addcontentsline{toc}{part}{War in Europe}
-\subfile{content/01.3-more-basic-training}
+\part{War in Europe}\label{war-in-europe}
+\chapter{En-route: Life on a Troopship}\label{en-route}
+\subfile{content/02.1-en-route}
 
-\part*{The Battle of the Bulge}\label{battle-of-the-bulge}
-\addcontentsline{toc}{part}{The Battle of the Bulge}
-\subfile{content/01.3-more-basic-training}
+\chapter{No Pint of Guinness!}\label{no-pint-of-guinness}
+\subfile{content/02.2-no-pint-of-guinness}
+
+\chapter{Goodbye, Infantry!}\label{goodbye-infantry}
+\subfile{content/02.3-goodbye-infantry}
+
+\chapter{What??? Goodbye Artillery\ldots\ Hello Infantry??}\label{goodbye-artillery}
+\subfile{content/02.4-goodbye-artillery}
+
+\part{The Battle of the Bulge}\label{battle-of-the-bulge}
+\chapter{A Bit of History}\label{bit-of-history}
+\subfile{content/03.1-a-bit-of-history}
+
+\chapter{Life as a Combat Rifleman}\label{life-as-a-combat-rifleman}
+\subfile{content/03.2-life-as-a-combat-rifleman}
+
+\chapter{Baptism in Fire}\label{baptism-in-fire}
+\subfile{content/03.3-baptism-in-fire}
+
+\chapter{Random Memories}\label{random-memories}
+\subfile{content/03.4-random-memories}
+
+\part{Better Days}\label{better-days}
+\subfile{content/04.0-intro}
+
+\chapter{Four Months a Patient}\label{four-months-a-patient}
+\subfile{content/04.1-four-months-a-patient}
+
+\chapter{The South of France}\label{the-south-of-france}
+\subfile{content/04.2-the-south-of-france}
+
+\chapter{Little Joe}\label{little-joe}
+\subfile{content/04.4-little-joe}
+
+\chapter{Random Memories}\label{random-memories-2}
+\subfile{content/04.3-random-memories-2}
+
+\chapter{Halcyon Days}\label{halcyon-days}
+\subfile{content/04.5-halcyon-days}
+
+\part{Back Where I Started}\label{back-where-i-started}
+\chapter{TBD}\label{return-sailing}
+\subfile{content/05.1-return-sailing}
+
+\part{Appendices}\label{appendices}
+\chapter*{A Luxembourg Christmas}\label{luxembourg-christmas}
+\addcontentsline{toc}{chapter}{A Luxembourg Christmas}
+\subfile{content/app-luxembourg-christmas}
+

@@ -3,12 +3,12 @@
 \usepackage{graphicx}
 \usepackage{fontspec}
 
-\usepackage{xifthen} 	  % for variable arity newcommand
+\usepackage{xifthen}      % for variable arity newcommand
 \usepackage{xr}
-\usepackage{hyperref} 	  % for \url
+\usepackage{hyperref}     % for \url
 \usepackage{changepage}   % for the adjustwidth environment
-\usepackage[super]{nth}	  % for formatting ordinal numbers
-
+\usepackage[super]{nth}   % for formatting ordinal numbers
+\usepackage{amsmath}      % for fractions
 \usepackage{subfiles}
 
 % Set page dimensions:
@@ -21,21 +21,22 @@
 \checkandfixthelayout
 
 \makeatletter
-
-\setlength{\cftbeforepartskip}{1em \@plus\p@} % default is ?, could add more as long as toc fits on 4 pages
-\setlength{\cftbeforechapterskip}{0.1em \@plus\p@} % default is 1.0em
-
+\setlength{\cftbeforepartskip}{1em \@plus\p@}
+\setlength{\cftbeforechapterskip}{0.1em \@plus\p@}
 \makeatother
 
-%\setmainfont{Hoefler Text}
+\setmainfont{Hoefler Text}
 \setsansfont[Scale=MatchLowercase]{Gill Sans}
 \setmonofont[Scale=MatchLowercase]{Andale Mono}
 
-\addtopsmarks{headings}{}{
-  \createmark{chapter}{left}{nonumber}{}{}
-}
+\title{My Three Years in the Infantry\\ \Large 1943 -- 1946}
+\author{Bernard Huntley}
+\date{}
+
+\addtopsmarks{headings}{}{\createmark{chapter}{left}{nonumber}{}{}}
 \pagestyle{headings} % activate changes
-\makeevenhead{headings}{\thepage}{\small My Three Years in the Infantry, 1943 -- 1946}{}
+
+\makeevenhead{headings}{\thepage}{\small \emph{My Three Years in the Infantry: 1943 -- 1946}}{}
 \makeoddhead{headings}{}{\small\leftmark}{\thepage}
 
 % remove page numbers from chapter and part pages
@@ -53,35 +54,6 @@
 % don't number sections
 \setsecnumdepth{chapter}
 
-
-% Custom commands ---
-
-\newcommand\PostDate[1]{
-  {\large \emph{#1}}}
-
-\newcommand\Chapter[2]{
-  \chapter[#1]{#1 (\emph{#2})}} % the first arg is used for heading
-  
-\newcommand\q[2]{
-  \ifthenelse{\equal{#2}{}}{\blockquote{#1}}{\blockquote[#2]{#1}}}
-
-\newcommand\itw[2]{ % interview question and response
-	\noindent\textbf{#1}\par
-	\smallskip
-	\noindent{#2}\par
-	\bigskip
-}
-
-\newcommand\p[2]{ % poem
-  \begin{verse}
-    {\itshape #1}
-
-    \ifthenelse{\equal{#2}{}}{}{(#2)}
-  \end{verse}}
-
-\def\el{\textelp{}\ } % ellipsis
-\def\els{\textelp{}} % ellipsis without space (when before.)
-
 \newcommand\pic[3]{
   \begin{figure}[htbp]
     \centering
@@ -89,9 +61,4 @@
     \emph{#3}
   \end{figure}}
 
-\title{My Three Years in the Infantry\\ \Large 1943 -- 1946}
-\author{Bernard Huntley}
-\date{}
-
 \begin{document}
-
