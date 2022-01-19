@@ -1,0 +1,113 @@
+\documentclass[
+    coverheight=9.861in,
+    coverwidth=6.655in, % (Final pagesize - spinewidth) / 2
+    spinewidth=0.444in,
+    bleedwidth=0in, 11pt,
+    marklength=0pt,
+  ]{bookcover}
+
+  \usepackage{fancybox}
+  \usepackage{wrapfig}
+  \usepackage[many]{tcolorbox}
+  \usepackage[T1]{fontenc}
+  \usepackage{Alegreya} %% Option 'black' gives heavier bold face 
+
+  \usepackage{graphicx}
+  \graphicspath{{../images/}}
+
+  \setmainfont{Hoefler Text}
+
+  \newcommand{\bartosz}{
+  }
+
+  \definecolor{BackgroundColor}{HTML}{b8ae7d}
+  \definecolor{SpineBackColor}{HTML}{f8e4c1}
+
+  \begin{document}
+
+  \begin{bookcover}
+    \bookcovercomponent{color}{bg front}{color=BackgroundColor}
+    \bookcovercomponent{color}{spine}{color=SpineBackColor}
+    \bookcovercomponent{color}{bg back}{color=SpineBackColor}
+    \bookcovercomponent{normal}{front}{
+		\vspace{2cm}
+		\begin{center}
+		  \fontsize{24}{5em}
+			{\selectfont\bfseries My Three Years in the Infantry\\ }
+			\vspace{0.5cm}
+			\emph{1943 -- 1946}\\
+		  \hspace*{-0.8cm}
+
+		  \vspace{0.8cm}
+		  \frame{\includegraphics[width=.5\coverwidth]{on-leave.png}}\\
+		  \vspace{0.8cm}
+		  \huge A Memoir
+		  \vfill
+		  \rule[1.5cm]{\textwidth/2}{.5pt}\\
+		  \vspace{-1.5cm}
+		  \normalfont\Huge\textbf{Bernard A. Huntley}
+		  \vspace*{1cm}
+		\end{center}
+	}
+
+    \bookcovercomponent{normal}{spine}{
+	  \hspace{4pt}
+      \rotatebox[origin=c]{-90}{
+		\hspace{2cm}
+     	\LARGE{\bfseries My Three Years in the Infantry}
+		\hspace{1cm}
+		\emph{1943 -- 1946}
+		\hspace{6cm}
+		Huntley
+		\hspace{1.5cm}
+	  }
+	}
+
+    \bookcovercomponent{normal}{back}{%
+   \begin{minipage}[t][\coverheight][t]{\coverwidth}
+      \begin{center}
+        \vspace{1cm}
+        \frame{\includegraphics[width=.8\coverwidth]{hamm-crosses}}
+		\vspace{1cm}
+        \begin{minipage}[t]{.8\coverwidth}
+		  \vspace{0.5cm}
+          \input{blurb}
+        \end{minipage}
+		\begin{minipage}[t]{.85\textwidth}
+		  \vspace{-0.5cm}
+			\rule{\textwidth}{.5pt}
+		  \begin{tabular}[h]{p{3.4cm} p{\textwidth}}
+		  \vspace{0pt}
+		  \begin{tcolorbox}[beamer,
+		    width=3.6cm,
+		    arc=0pt,
+		    boxsep=0pt,
+		    left=0pt,right=0pt,top=0pt,bottom=0pt,
+		    ]
+		    \includegraphics[width=3.6cm]{author}
+		  \end{tcolorbox}
+            &
+          \vspace{5pt}
+          \begin{minipage}[b]{.58\coverwidth}
+			\fontsize{11pt}{1.4em}\selectfont\textit
+			{My Three Years in the Infantry} contains the recollections\\
+			of Dr. Bernard Huntley some sixty years after his service\\
+			in the Battle of the Bulge. These memoirs were originally \\
+			assembled as a guide in advance of a family trip to revisit \\
+			the locations he saw combat during that bitter winter \\
+			decades ago in the otherwise bucolic countryside of\\
+			Luxembourg.\\
+		  \end{minipage}
+        \end{tabular}
+        \begin{flushright}
+          \vspace{-2.6cm}
+		  \begin{minipage}[b]{4cm}
+			\raggedleft
+          \end{minipage}
+        \end{flushright}
+      \end{minipage}
+	\end{center}
+  \end{minipage}
+  }
+  \end{bookcover}
+\end{document}

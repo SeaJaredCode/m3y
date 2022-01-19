@@ -9,21 +9,27 @@ OUTPUT = m3y
 # Default top-level LaTeX to generate
 DEFAULTTOPTEX = m3y-print.tex
 
-TOPTEXFILES = $(DEFAULTTOPTEX) #version.tex
+EBOOKTEXFILES = m3y-ebook.tex
+
+TOPTEXFILES = $(DEFAULTTOPTEX) $(EBOOKTEXFILES) #version.tex
 
 # Default PDF file to make
 DEFAULTPDF:=$(DEFAULTTOPTEX:.tex=.pdf)
+
+EBOOKPDF:=$(EBOOKTEXFILES:.tex=.pdf)
 
 # Other PDF files for the m3y book
 TOPPDFFILES:=$(TOPTEXFILES:.tex=.pdf)
 
 # Configuration files
-OPTFILES = opt-print-blurb.tex
+OPTFILES = opt-print-blurb.tex \
+		   opt-ebook.tex
 
-TEXFILES = $(TOPTEXFILES) $(OPTFILES)
+TEXFILES = $(TOPTEXFILES) $(EBOOKTEXFILES) $(OPTFILES)
 
-default: suffix=''
 default: out-dir $(DEFAULTPDF) # todo cover
+
+ebook: out-dir $(EBOOKPDF)
 
 all: clean default
 
@@ -36,10 +42,11 @@ $(TOPPDFFILES) : %.pdf : %.tex $(TEXFILES)
 			-interaction=nonstopmode \
 			-halt-on-error \
 			-norc \
-			-jobname=m3y \
+			-jobname=$(subst m3y,$(OUTPUT),$*) \
 			-outdir=$(OUTPUT_DIR) \
 			-pdflatex="xelatex %O %S" \
 			-pdf $<; \
+		ln -sf $(OUTPUT_DIR)/$(subst m3y,$(OUTPUT),$*).pdf $(OUTPUT_DIR)/$(OUTPUT).pdf ;\
 	else @printf "Error: unable to find latexmk. Is it installed?\n" ;\
 	fi
 

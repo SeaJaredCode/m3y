@@ -17,6 +17,15 @@
 \clearpage
 
 % Title page (recto)
+\renewcommand{\maketitlehookd}{%
+\par
+\vfill
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/ci-badge}
+\vspace*{8\baselineskip}
+\end{center}
+}
+
 \maketitle
 \thispagestyle{empty}
 \clearpage
@@ -29,19 +38,19 @@
 \thispagestyle{empty}
 \begin{minipage}[b]{0.9\textwidth}
 \setlength{\parskip}{0.5\baselineskip}
-First edition copyright \copyright 2004, Bernard Huntley\par
-This edition copyright \copyright \the\year , Bernard Huntley.\par
-Edited by Jared Stiff\par
+\makeatletter
+First edition copyright \copyright 2004,  \@author\par
+This edition copyright \copyright \the\year , Jared Huntley Stiff (grandson)\par
+\makeatother
 \vspace*{2\baselineskip}
 
 All rights reserved.\par
 \vspace*{2\baselineskip}
 
-Embedded photographs and images copyright credited where used.
-
 \end{minipage}
 \vspace*{2\baselineskip}
 \vfill
-\noindent{\centering \small {\scshape Cover image:} Bernard Huntley as a new enlistee at 18 years old \emph{ca.} 1943\par}
+\noindent{\centering \small {\scshape Cover image:} The author on leave, Summer 1944\par}
+\noindent{\centering \small {\scshape Title page image:} Combat Infantryman Badge\par}
 \endgroup
 \clearpage

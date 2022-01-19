@@ -20,6 +20,7 @@
 
 \frontmatter
 % \input{content/editor-note}
+\input{content/00-forward}
 \input{content/00-preface}
 
 \renewcommand{\cftpartaftersnumb}{\hspace{.5em}}
@@ -29,8 +30,10 @@
 \tableofcontents
 
 \mainmatter
+\graphicspath{{\subfix{./images/}}}
 
 \part{Stateside Infantry Training}\label{stateside-infantry-training}
+\chapter{War Was in the Air}\label{war-in-the-air}
 \subfile{content/01-stateside-infantry-training}
 
 \chapter{Infantry Basic in South Carolina}\label{infantry-basic}
@@ -43,7 +46,7 @@
 \subfile{content/01.3-more-basic-training}
 
 \part{War in Europe}\label{war-in-europe}
-\chapter{En-route: Life on a Troopship}\label{en-route}
+\chapter{En route: Life on a Troopship}\label{en-route}
 \subfile{content/02.1-en-route}
 
 \chapter{No Pint of Guinness!}\label{no-pint-of-guinness}
@@ -69,6 +72,7 @@
 \subfile{content/03.4-random-memories}
 
 \part{Better Days}\label{better-days}
+\chaptermark{Intro}
 \subfile{content/04.0-intro}
 
 \chapter{Four Months a Patient}\label{four-months-a-patient}
@@ -77,21 +81,32 @@
 \chapter{The South of France}\label{the-south-of-france}
 \subfile{content/04.2-the-south-of-france}
 
-\chapter{Little Joe}\label{little-joe}
-\subfile{content/04.4-little-joe}
-
 \chapter{Random Memories}\label{random-memories-2}
 \subfile{content/04.3-random-memories-2}
+
+\chapter{Little Joe}\label{little-joe}
+\subfile{content/04.4-little-joe}
 
 \chapter{Halcyon Days}\label{halcyon-days}
 \subfile{content/04.5-halcyon-days}
 
 \part{Back Where I Started}\label{back-where-i-started}
-\chapter{TBD}\label{return-sailing}
+\chapter{The Luck of it All}\label{return-sailing}
 \subfile{content/05.1-return-sailing}
 
-\part{Appendices}\label{appendices}
-\chapter*{A Luxembourg Christmas}\label{luxembourg-christmas}
-\addcontentsline{toc}{chapter}{A Luxembourg Christmas}
+\part{The Rest of the Story}\label{rest-of-the-story}
+\chapter*[Epilogue]{Epilogue}\label{epilogue}
+\addcontentsline{toc}{chapter}{Epilogue}
+\subfile{content/epilogue}
+
+\part*{Appendices}\label{appendices}
+\addcontentsline{toc}{part}{Appendices}
+\appendix
+
+\chapter[A Luxembourg Christmas]{A Luxembourg Christmas\footnote{Initially sent to family and friends as our 1999 Christmas greeting.}}\label{luxembourg-christmas}
+\chaptermark{A Luxembourg Christmas}
 \subfile{content/app-luxembourg-christmas}
+
+\chapter[Fort Devens]{Fort Devens\footnote{Initially written for my own pleasure at recollection on a rainy Sunday afternoon in March, 1996.}}\label{fort-devens}
+\subfile{content/app-fort-devens}
 

@@ -3,12 +3,10 @@
 \usepackage{graphicx}
 \usepackage{fontspec}
 
-\usepackage{xifthen}      % for variable arity newcommand
 \usepackage{xr}
 \usepackage{hyperref}     % for \url
 \usepackage{changepage}   % for the adjustwidth environment
 \usepackage[super]{nth}   % for formatting ordinal numbers
-\usepackage{amsmath}      % for fractions
 \usepackage{subfiles}
 
 % Set page dimensions:
@@ -29,8 +27,14 @@
 \setsansfont[Scale=MatchLowercase]{Gill Sans}
 \setmonofont[Scale=MatchLowercase]{Andale Mono}
 
+\newfontfamily\newtimes{Times New Roman}[
+  % the font has no small caps, so we use another one for them
+  SmallCapsFont=TeX Gyre Termes,
+  SmallCapsFeatures={Letters=SmallCaps}
+]
+
 \title{My Three Years in the Infantry\\ \Large 1943 -- 1946}
-\author{Bernard Huntley}
+\author{Bernard A. Huntley}
 \date{}
 
 \addtopsmarks{headings}{}{\createmark{chapter}{left}{nonumber}{}{}}
@@ -53,12 +57,5 @@
 \setsecheadstyle{\normalfont\itshape}
 % don't number sections
 \setsecnumdepth{chapter}
-
-\newcommand\pic[3]{
-  \begin{figure}[htbp]
-    \centering
-    \includegraphics[width=#2cm]{images/#1}\\
-    \emph{#3}
-  \end{figure}}
 
 \begin{document}
